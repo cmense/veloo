@@ -1,7 +1,6 @@
 /.idea/
 /node_modules/*
 /npm-debug.log
-/config/config.js
 !.gitkeep
 bower_components/
 .DS_Store
@@ -10,5 +9,3 @@ bower_components/
 build
 */**/Thumbs.db
 *.iml
-
-
