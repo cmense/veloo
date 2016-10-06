@@ -3,6 +3,7 @@
 /npm-debug.log
 !.gitkeep
 bower_components/
+config/config.js
 .DS_Store
 .idea
 .project

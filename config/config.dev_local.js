@@ -1,7 +1,7 @@
 var Config = {};
 Config.db = {
-    user:'admin',
-    pass:'chill'
+    user:'user',
+    pass:'pass'
 };
 Config.app={};
 Config.auth = {};
