@@ -26,6 +26,7 @@ var app = express();
  * app setup
  */
 
+app.use(express.static(__dirname + "/public"));
 app.use(cors());
 app.use(bodyParser({limit: '50mb'}));
 app.use(bodyParser.json());
