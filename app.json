@@ -2,7 +2,6 @@
   "name": "Veloo",
   "description": "A simple bike sharing platform.",
   "repository": "https://github.com/delsner/veloo",
-  "logo": "https://github.com/delsner/delsner.github.io/blob/master/img/veloo.ico",
   "keywords": ["node", "express", "angular", "MEAN", "mongodb", "REST", "API"],
   "addons": ["mongolab"]
 }
