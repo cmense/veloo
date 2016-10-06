@@ -1,22 +1,4 @@
-## Prerequisites
-
-Both for the back end and front end application check
-
-* nodejs [official website](https://nodejs.org/en/) - nodejs includes [npm](https://www.npmjs.com/) (node package manager)
-
-Just for the backend application:
-
-* mongodb [official installation guide](https://docs.mongodb.org/manual/administration/install-community/)
-* mocha cli [installation](https://mochajs.org/#installation)
-
-
-
-## Setup (before first run)
-
-go to your project root folder via command line
-```
-cd path/to/workspace/sebamaster-movie-frontend
-```
+## Setup
 
 **install node dependencies**
 
@@ -30,10 +12,6 @@ npm install
 * start the database server 
 ```
 mongod --dbpath relative/path/to/database
-```
-* create all database schemes and import data to begin with 
-```
-mongorestore dump/
 ```
 
 **set up environment configuration**
@@ -54,18 +32,4 @@ start the web server
 ```
 node server.js
 ```
-
-## testing
-
-**Important** Make sure that mocha is installed globally as it is specified in [documentation](https://mochajs.org/#installation). 
-
-Some tests are already implemented using the test framework mocha: Simply run
-
-```
-mocha
-```
-
-...and hope that all tests will pass.
-
-**Alternative/Additionally:** you could also use postman [postman](https://www.getpostman.com/)
-You need to import the test and environment from `test/rest.json.postman_collection` and `test/localhost.postman_environment`
+Optional: use nodemon for automatic reloading of nodejs instance.
