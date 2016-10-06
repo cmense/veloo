@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="velooAngular">
+
+    <head>
+        <title>Veloo</title>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no"/>
+        <link rel="icon" href="images/favicon.ico">
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+        <link rel="stylesheet" href="style.min.css">
+
+    </head>
+
+    <body layout='column' ng-controller="mainCtrl as mainCtrl" ng-cloak>
+
+        <div id='nav' ng-include src="'components/main/templates/navbar.tpl.html'"></div>
+        <md-sidenav layout="column" class="md-sidenav-right md-whiteframe-z2" md-component-id="right" is-locked-open="$media('sm')" hide-gt-sm flex ng-include src="'components/main/templates/sidenav.tpl.html'" style="z-index: 999"></md-sidenav>
+        <!--<div id="sidenav" ng-include src="'components/main/templates/sidenav.tpl.html'"></div>-->
+
+        <div layout="row" layout-sm="column" layout-align="space-around" class="spinner-container" ng-show="mainCtrl.loading">
+            <md-progress-circular md-mode="indeterminate" style="top:50%" class="md-warn"></md-progress-circular>
+        </div>
+
+        <md-content scroll flex layout='column' ng-class="{scrollable:mainCtrl.scrollable()}" ng-class="{{mainCtrl.currentLocation()=='/' ? '' : 'not-front-page'}}">
+
+            <header md-page-header ng-if="mainCtrl.currentLocation()=='/'">
+                <div class="header-content">
+                    <div id="citationContainer" class="header-content-inner">
+                        <h1 class="md-display-1">Find your Veloo</h1>
+                        <br>
+                        <h1 class="md-headline">
+                            Bicycle rental made easy
+                        </h1>
+                        <hr>
+                        <md-autocomplete
+                            flex="50"
+                            flex-offset="25"
+                            md-selected-item="mainCtrl.selectedItem"
+                            md-search-text-change="mainCtrl.searchTextChange(mainCtrl.searchText)"
+                            md-search-text="mainCtrl.searchText"
+                            md-selected-item-change="mainCtrl.selectedItemChange(item)"
+                            md-items="item in mainCtrl.getSearchHints(mainCtrl.searchText)"
+                            md-item-text="item.name"
+                            md-min-length="2"
+                            placeholder="Search for bicycles in city..."
+                            ng-keypress="mainCtrl.showSearchResults($event, mainCtrl.searchText)"
+                            md-menu-class="autocomplete-custom-template">
+                            <md-item-template>
+                                <div flex ng-click="mainCtrl.setPathTo('bicycle/'+item._id)">
+                                    <span class="item-title">
+                                        <md-icon>directions_bike</md-icon>
+                                        <span>
+                                            {{item.city}}
+                                            -
+                                            {{item.type}}
+                                            -
+                                            {{item.description}}
+                                        </span>
+                                    </span>
+                                </div>
+                            </md-item-template>
+                            <md-not-found>
+                                No results for
+                                {{mainCtrl.searchText}}.
+                            </md-not-found>
+                        </md-autocomplete>
+                    </div>
+                </div>
+            </header>
+
+            <div id='content' ng-view autoscroll="true" flex></div>
+
+            <div id='footer' ng-if="mainCtrl.currentLocation()=='/'">
+                <footer ng-include src="'components/home/templates/footer.tpl.html'"></footer>
+            </div>
+
+        </md-content>
+
+        <!-- JS-DEPENDENCIES -->
+
+        <!-- startinject -->
+        <!-- CDN -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-animate.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-aria.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-messages.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-resource.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-sanitize.min.js"></script>
+        <!-- endinject -->
+
+        <!-- BOWER + OWN -->
+        <script src="app.min.js"></script>
+
+    </body>
+
+</html>
