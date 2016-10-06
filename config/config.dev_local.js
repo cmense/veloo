@@ -6,7 +6,7 @@ Config.db = {
 Config.app={};
 Config.auth = {};
 
-Config.db.host = 'ds035046.mlab.com:35046';
+Config.db.host = 'host:port';
 Config.db.name = 'veloo';
 
 // Use environment defined port or 3000
