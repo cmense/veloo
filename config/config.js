@@ -3,7 +3,7 @@ Config.db = {};
 Config.app={};
 Config.auth = {};
 
-Config.db.host = process.env.MONGODB_URI;
+Config.db.host = 'mongodb:admin:chill@ds035046.mlab.com:35046';
 Config.db.name = 'veloo';
 
 // Use environment defined port or 3000
